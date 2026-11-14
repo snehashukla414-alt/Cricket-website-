@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071b16">
+  <meta name="description" content="India cricket match centre — men's and women's live scores, fixtures and results.">
+  <title>INDIA XI — Cricket Match Centre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">I<span>N</span></span><span>INDIA <b>XI</b><small>CRICKET MATCH CENTRE</small></span></a>
+    <nav><a class="active" href="#matches">MATCHES</a><a href="#about">ABOUT</a></nav>
+    <button class="settings-btn" id="settingsBtn" aria-label="Settings">⚙ <span>SETUP</span></button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><i></i> THE INDIA CRICKET HUB</div>
+        <h1>EVERY MATCH.<br><em>ONE NATION.</em></h1>
+        <p>Every boundary, every wicket, every moment.<br>Follow India's men's and women's teams.</p>
+        <a class="hero-link" href="#matches">EXPLORE MATCH CENTRE <span>↘</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="ball"><span>IND</span></div><div class="art-label label-top">MEN'S + WOMEN'S</div>
+        <div class="art-label label-bottom">EST. 1932 <b>•</b> 2026</div>
+        <div class="vertical-word">INDIA</div>
+      </div>
+      <div class="hero-foot"><span>01 / MATCH CENTRE</span><span>MEN'S & WOMEN'S INTERNATIONAL CRICKET</span><span>SCROLL TO EXPLORE ↓</span></div>
+    </section>
+
+    <section class="match-section" id="matches">
+      <div class="section-head">
+        <div><div class="eyebrow">THE SCOREBOARD</div><h2>THE <em>FIXTURES.</em></h2></div>
+        <div class="updated" id="updated">DATA NOT CONNECTED</div>
+      </div>
+      <div class="toolbar">
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-status="live">LIVE <span class="live-dot"></span></button>
+          <button class="tab" data-status="upcoming">UPCOMING</button>
+          <button class="tab" data-status="completed">RESULTS</button>
+        </div>
+        <div class="filters">
+          <select id="genderFilter" aria-label="Team category"><option value="all">MEN + WOMEN</option><option value="male">MEN'S</option><option value="female">WOMEN'S</option></select>
+          <select id="formatFilter" aria-label="Match format"><option value="all">ALL FORMATS</option><option>Test</option><option>ODI</option><option>T20I</option><option>T20</option></select>
+          <button id="refreshBtn" class="refresh">↻ <span>REFRESH</span></button>
+        </div>
+      </div>
+      <div class="status-line"><span id="statusTitle">LIVE MATCHES</span><span id="matchCount">0 MATCHES</span></div>
+      <div id="matchGrid" class="match-grid">
+        <div class="empty-state"><div class="empty-icon">🏏</div><h3>YOUR MATCH CENTRE AWAITS</h3><p>Connect a cricket data API to load India's live scores, fixtures and results.</p><button class="primary-btn" id="connectNow">CONNECT DATA SOURCE ↗</button></div>
+      </div>
+      <div class="disclaimer" id="dataNote">Match data is supplied by your connected cricket data provider. No demo scores are shown as real results.</div>
+    </section>
+
+    <section class="feature-strip">
+      <div><span class="feature-num">01</span><b>LIVE ACTION</b><small>Follow the game as it happens.</small></div>
+      <div><span class="feature-num">02</span><b>UPCOMING FIXTURES</b><small>Know what's next for India.</small></div>
+      <div><span class="feature-num">03</span><b>MATCH ARCHIVE</b><small>Revisit completed matches.</small></div>
+    </section>
+    <section class="about" id="about"><div class="eyebrow">BUILT FOR THE FANS</div><h2>BLUE JERSEY.<br><em>BIG MOMENTS.</em></h2><p>One home for India's men's and women's cricket. Filter by team category and format, then switch between live action, upcoming fixtures and completed results.</p></section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">I<span>N</span></span><span>INDIA <b>XI</b><small>CRICKET MATCH CENTRE</small></span></a><span>MADE FOR INDIAN CRICKET FANS 🇮🇳</span><span>DATA BY <a href="https://opencricketapi.com/" target="_blank" rel="noreferrer">OPENCRICKET API</a></span></footer>
+
+  <dialog id="settingsDialog">
+    <form method="dialog" class="dialog-top"><div><div class="eyebrow">DATA CONNECTION</div><h2>CONNECT YOUR <em>SCOREBOARD.</em></h2></div><button class="close" aria-label="Close">✕</button></form>
+    <div class="dialog-content">
+      <p>This site uses OpenCricket API for match data. Create an API key, then paste it below. The key is saved only in this browser's local storage.</p>
+      <label for="apiKey">OPENCRICKET API KEY</label><input id="apiKey" type="password" placeholder="oc_live_••••••••••••" autocomplete="off">
+      <div class="key-actions"><a href="https://opencricketapi.com/" target="_blank" rel="noreferrer">GET A FREE API KEY ↗</a><span id="keyStatus">NOT CONNECTED</span></div>
+      <div class="notice"><b>IMPORTANT:</b> GitHub Pages is a static host. A key stored in browser storage is not a secret from the browser user. Do not use a key with sensitive permissions or share your deployed site as a secure API proxy. For a public production site, use a server-side proxy (e.g. Cloudflare Worker) to protect the key.</div>
+      <div class="dialog-actions"><button type="button" class="secondary-btn" id="clearKey">REMOVE KEY</button><button type="button" class="primary-btn" id="saveKey">SAVE & LOAD MATCHES ↗</button></div>
+      <small class="plan-note">OpenCricket's free Starter plan is limited to archive matches from the last 12 months; live scores and fixtures require its Developer plan. Availability and quotas are controlled by the provider.</small>
+    </div>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
